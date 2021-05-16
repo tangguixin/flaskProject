@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>理工云</title>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script>
+    <script src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=YV6nippqIy6S7EwiB6jVXgl8WST8I9Z3"></script>
+    
+</head>
+<body>
+<!--主体-->
+<div class="main clearfix">
+
+    <div class="main-left">
+        <div class="border-container containertop">
+            <h5 class="name-title tile-size-color">
+                                无人机实时位置
+            </h5>
+            <div id="radar">
+{#            	<div class="radarkong">#}
+{#            		<p class="tile-size-color">设备总数 :<span class="Totalequipment"> 660个</span>统计时间 :<span> 2019.03.26 15:28</span></p>#}
+{#            	</div>#}
+            	<div class="progress1-chart" id="container1"></div>
+{#            	<ul class="SiteStatusList">#}
+{#            		<li><i class="Statusnormal Statussame"></i>正常：<span>556</span></li>#}
+{#            		<li><i class="Statusemergency Statussame"></i>告警：<span>40</span></li>#}
+{#            		<li><i class="StatusOffline Statussame"></i>离线：<span>30</span></li>#}
+{#            	</ul>#}
+            </div>
+        </div>
+        
+        <div class="border-container containerbottom">
+            <div class="name-title tile-size-color">
+              	 温度传感器
+            </div>
+            <div class="graduateyear">
+            	<div class="bar-chart" id="bar-chart"></div>
+{#            	<ul class="SiteStatusList">#}
+{#            		<li>本周数据</li>#}
+{#            		<li class="DataSwitch"><i class="ThisweekData Datasame" onClick="DataSwitch(this,1)"></i><i class="ThisweekData" onClick="DataSwitch(this,2)"></i></li>#}
+{#            		<li class="Defaultgray">本月数据</li>#}
+{#            	</ul>#}
+            </div>
+           
+            
+        </div>
+    </div>
+
+    <div class="main-middle">
+        <div class="border-container containertop">
+        	<div class="name-title tile-size-color">
+              	 无人机画面
+            </div>
+           <div id="mapadd">
+{#           		<div class="mapleft">#}
+{#           			<div class="progress2-chart" id="progress2-chart">#}
+{#	           		</div>#}
+{#	           		<a href="###" class="progressMore">更多&gt;</a>#}
+{#           		</div>#}
+
+{#           		<div class="map-chart" id="map-chart"></div>#}
+               <video class="map-chart" src=""></video>
+
+{#           		<ul class="Devicestatus-List">#}
+{#           			<li class="Online2">65.5%#}
+{#           				<span class="DevicestatusName">在线</span>#}
+{#           			</li>#}
+{#           			<li class="Online2">10.5%#}
+{#           				<span class="DevicestatusName">离线</span>#}
+{#           			</li>#}
+{#           			<li class="Online2">10.5%#}
+{#           				<span class="DevicestatusName">维护</span>#}
+{#           			</li>#}
+{#           			<li class="Online2">9.5%#}
+{#           				<span class="DevicestatusName">故障</span>#}
+{#           			</li>#}
+{#           		</ul>#}
+
+           </div>
+        </div>
+
+          <div class="border-container containerbottom">
+        	<div class="name-title tile-size-color">
+              	 光强度传感器
+            </div>
+                       <div class="graduateyear">
+            	<div class="bar-chart" id="line-chart"></div>
+{#            	<ul class="SiteStatusList">#}
+{#            		<li>本周数据</li>#}
+{#            		<li class="DataSwitch"><i class="ThisweekData Datasame" onClick="DataSwitch(this,1)"></i><i class="ThisweekData" onClick="DataSwitch(this,2)"></i></li>#}
+{#            		<li class="Defaultgray">本月数据</li>#}
+{#            	</ul>#}
+            </div>
+
+        </div>
+
+    </div>
+    <div class="main-right">
+        <div class="border-container containertop">
+            <div class="name-title tile-size-color">
+               	传感器分布图
+            </div>
+           <div class="progress1-chart" id="container"></div>
+        </div>
+        <div class="border-container containerbottom">
+            <div class="name-title tile-size-color">
+             	湿度传感器
+            </div>
+          	<div id="radar-chart" class="radar-chart">
+          	
+         	</div>
+           
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/echarts.js"></script>
+<script type="text/javascript" src="/static/js/new_file.js"></script>
+<script type="text/javascript" src="/static/js/maps.js"></script>
+<script>
+var map = new BMapGL.Map('container');
+map.centerAndZoom(new BMapGL.Point(116.404, 39.928), 15);
+map.enableScrollWheelZoom(true);
+// 创建点标记
+var marker1 = new BMapGL.Marker(new BMapGL.Point(116.404, 39.925));
+var marker2 = new BMapGL.Marker(new BMapGL.Point(116.404, 39.915));
+var marker3 = new BMapGL.Marker(new BMapGL.Point(116.395, 39.935));
+var marker4 = new BMapGL.Marker(new BMapGL.Point(116.415, 39.931));
+// 在地图上添加点标记
+map.addOverlay(marker1);
+map.addOverlay(marker2);
+map.addOverlay(marker3);
+map.addOverlay(marker4);
+var map1 = new BMapGL.Map('container1');
+map1.centerAndZoom(new BMapGL.Point(116.404, 39.928), 15);
+map1.enableScrollWheelZoom(true);
+map1.addOverlay(marker1);
+map1.addOverlay(marker2);
+map1.addOverlay(marker3);
+map1.addOverlay(marker4);
+</script>
+
+
+
+</body>
+</html>
